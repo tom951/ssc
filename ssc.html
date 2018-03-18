@@ -1,0 +1,41 @@
+<script src="angu.js"></script>
+<script src="ssc.js"></script>
+ 
+<body ng-app="mainModule" ng-controller="simpleCtrl">
+ 
+   
+   <button type="button"  ng-click="addEntry()">Dodaj</button>  
+   <div ng-repeat="element in elementy">
+   <table border="1" cellpadding="10">
+		<tr>
+			<td>KWOTA NETTO</td>
+			<td>STAWKA VAT</td>
+			<td>KWOTA BRUTTO</td>
+		</tr>
+	 
+		
+		<tr>
+			<td>
+				<input ng-model="element.kwn" class="form-control"   type="number" ng-change="testujemy(element.kwn)">
+			</td>
+			<td>
+				<select ng-model="element.Vvat"> <option  ng-repeat="stawka in element.vat"  >{{stawka}}</option></select>
+			</td>
+			<td>
+				<input ng-model="element.kwb" class="form-control" type="number" ng-click="element.kwn+element.kwn*element.Vvat/100">
+			</td>
+		</tr>
+		
+		<tr>
+			<td >Razem Netto: {{element.kwn}}</td>
+			<td>Pobrany Vat: {{element.kwn*element.Vvat/100}}</td>
+			<td>Razem Brutto: {{element.kwn+element.kwn*element.Vvat/100}}</td>
+			
+		</tr>
+	 
+	 
+   </table>
+   </div>
+  
+  
+</body>
